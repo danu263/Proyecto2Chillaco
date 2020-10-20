@@ -10,6 +10,7 @@ char confirmationMessage[32] = "";
 char sendText[32] = "";
 
 void setup() {
+  Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[0]); // 00001
   radio.openReadingPipe(1, addresses[1]); // 00002

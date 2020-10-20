@@ -11,6 +11,7 @@ const char confirmationMessage = "Data Received, go to sleep mode";
 const char sendText[] = "Send data";   
 
 void setup() {
+  Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[1]); // 00002
   radio.openReadingPipe(1, addresses[0]); // 00001
@@ -18,9 +19,10 @@ void setup() {
 }
 
 void loop() {
-  
+Serial.print("ffffirst print");
 if (!sleep == 1)  {
-    
+
+    Serial.print("first print");
     radio.stopListening();                                    // First, stop listening so we can talk.
      
     while(!confirmation){
