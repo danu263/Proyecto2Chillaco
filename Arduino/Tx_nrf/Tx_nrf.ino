@@ -19,10 +19,10 @@ void setup() {
 }
 
 void loop() {
-Serial.print("ffffirst print");
+Serial.println("ffffirst print");
 if (!sleep == 1)  {
 
-    Serial.print("first print");
+    Serial.println("first print");
     radio.stopListening();                                    // First, stop listening so we can talk.
      
     while(!confirmation){
@@ -52,22 +52,22 @@ if (!sleep == 1)  {
         unsigned long time = micros();
         radio.read(&dataReceived, sizeof(dataReceived));
           
-        Serial.print("Data received is: ");
-        Serial.print(dataReceived);
-        Serial.print("Sending confirmation");
+        Serial.println("Data received is: ");
+        Serial.println(dataReceived);
+        Serial.println("Sending confirmation");
         
         radio.stopListening();
         radio.write(&confirmationMessage, sizeof(confirmationMessage));
         confirmation = 1;
     }
 
-    Serial.print("2 seconds of delay, printing state of confirmation: ");
-    Serial.print(confirmation);
+    Serial.println("2 seconds of delay, printing state of confirmation: ");
+    Serial.println(confirmation);
     delay(2000);
     }
     confirmation = 0;
-    Serial.print("Successful request");
-    Serial.print("Changing confirmation to send a request again");
+    Serial.println("Successful request");
+    Serial.println("Changing confirmation to send a request again");
     delay(3000);
   }
   

@@ -24,22 +24,24 @@ void loop() {
 
     while (!radio.available());
     radio.read(&sendText, sizeof(sendText));
-    Serial.print(sendText);
+    Serial.println("Value of sendText is: ");
+    Serial.println(sendText);
     
     if( sendText == "Send data") {
       radio.stopListening();
-      Serial.print("Sending data");
+      Serial.println("Sending data");
       radio.write( &myData, sizeof(myData) );
       
       radio.startListening();
       while (!radio.available());
       radio.read(&confirmationMessage, sizeof(confirmationMessage));
-      Serial.print(confirmationMessage);
+      Serial.println("Value of confirmation Message is: ");
+      Serial.println(confirmationMessage);
       if (confirmationMessage == "Data Received, go to sleep mode") {
         sleep == 1;
         }
-      Serial.print("Estado de sleep: ");
-      Serial.print(sleep) ;     
+      Serial.println("Estado de sleep: ");
+      Serial.println(sleep) ;     
       }
     }
 }
