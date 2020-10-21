@@ -7,7 +7,7 @@ const byte addresses[][6] = {"00001", "00002"};
 bool sleep = 0;
 bool confirmation = 0;
 char dataReceived[32] = "";
-const char confirmationMessage = "Data Received, go to sleep mode";
+const char confirmationMessage[] = "Data Received, go to sleep mode";
 const char sendText[] = "Send data";   
 
 void setup() {
@@ -28,10 +28,6 @@ if (!sleep == 1)  {
     while(!confirmation){
     Serial.println(sendText);
     radio.write(&sendText, sizeof(sendText));
-
-    if (!radio.write( &sendText, sizeof(sendText) )){
-       Serial.println("failed");
-    }
         
     radio.startListening();                                    // Now, continue listening
     
