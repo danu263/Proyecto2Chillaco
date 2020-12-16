@@ -5,11 +5,13 @@ RF24 radio(7, 8); // CE, CSN
 
 const byte addresses[][6] = {"00001", "00002"};
 bool sleep = 0;
-char myData[] = "X humedad relativa";
+int myData = 99;                  // humedad relativa
 char sendData[] = "Send data";
 char confMessage[] = "Data Received, go to sleep mode";
 char confirmationMessage[32] = "";
 char sendText[32] = "";
+
+
 
 void setup() {
   Serial.begin(9600);
@@ -21,6 +23,11 @@ void setup() {
 
 void loop() {
   
+  sendDataFunction();
+  
+}
+
+void sendDataFunction(){
   if (!sleep == 1) {
     
     radio.startListening();
@@ -48,9 +55,7 @@ void loop() {
       Serial.println(confirmationMessage);
       if (confirmationMessage[0] == 'D') {
         sleep == 1;
-        }
-      Serial.println("Estado de sleep: ");
-      Serial.println(sleep) ;     
+        }     
       }
     }
 }
